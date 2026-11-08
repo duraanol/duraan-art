@@ -107,8 +107,16 @@ section { padding: clamp(40px, 6vw, 72px) 0; }
 }
 .piece.wide { grid-column: span 2; }
 @media (max-width: 580px) { .piece.wide { grid-column: span 1; } }
-.piece img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
-.piece.wide img { aspect-ratio: 8 / 5; }
+.piece .art {
+  display: block; width: 100%; aspect-ratio: 4 / 5;
+  background: var(--paper) center / contain no-repeat;
+  pointer-events: none;
+}
+.piece.wide .art { aspect-ratio: 8 / 5; }
+.piece, .piece *, .lightbox, .lightbox * {
+  -webkit-user-select: none; user-select: none;
+  -webkit-touch-callout: none; -webkit-user-drag: none;
+}
 .piece .num {
   position: absolute; top: 10px; left: 12px;
   font-family: var(--display); font-weight: 700; font-size: 20px;
@@ -133,6 +141,27 @@ section { padding: clamp(40px, 6vw, 72px) 0; }
   text-align: center;
   color: var(--mid);
 }
+
+/* pledge */
+.pledge {
+  padding: clamp(28px, 4vw, 44px) 0 0;
+}
+.pledge p {
+  margin: 0; max-width: 70ch;
+  font-size: clamp(18px, 2.1vw, 23px); line-height: 1.45;
+  border-left: 8px solid var(--red); padding-left: 20px;
+}
+.pledge strong { font-family: var(--display); font-weight: 900; font-size: 1.35em; text-transform: uppercase; letter-spacing: 0.01em; margin-right: 6px; }
+.note { font-size: 14px; color: var(--mid); margin: 14px 0 0; }
+
+/* terms */
+.terms { border-top: 3px solid var(--rule); }
+.terms h2 { font-size: clamp(32px, 4vw, 48px); }
+.terms-body { max-width: 90ch; font-size: 11.5px; line-height: 1.5; color: #333; column-gap: 32px; }
+@media (min-width: 900px) { .terms-body { columns: 2; } }
+.terms-body p { margin: 0 0 10px; break-inside: avoid; }
+.terms-body strong { color: var(--ink); }
+.stamp-line { font-family: var(--display); font-weight: 700; font-size: 16px !important; color: var(--ink) !important; margin-top: 16px !important; }
 
 /* commissions */
 .comm-body, .about-body { max-width: 62ch; }
@@ -160,7 +189,11 @@ section { padding: clamp(40px, 6vw, 72px) 0; }
 }
 .lightbox[hidden] { display: none; }
 .lightbox figure { margin: 0; text-align: center; max-height: 100vh; padding: 48px 0; }
-.lightbox img { max-width: 100%; max-height: calc(100vh - 140px); border: 3px solid var(--rule); background: var(--paper); }
+.lb-art {
+  width: min(92vw, 1100px); height: calc(100vh - 140px); margin: 0 auto;
+  background: transparent center / contain no-repeat;
+  pointer-events: none;
+}
 .lightbox figcaption { margin-top: 12px; font-size: 15px; }
 .lb-nav, .lb-close {
   background: none; border: 0; cursor: pointer; color: var(--ink);

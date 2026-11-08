@@ -1,0 +1,14 @@
+# ai.txt for duraan.art (spawning.ai format)
+# All content on this site is hand-drawn original artwork by Duraan Olomi.
+# No AI/ML training, fine-tuning, embedding, or dataset use is permitted.
+# Terms: https://duraan.art/#terms
+User-Agent: *
+Disallow: /
+Disallow: *.png
+Disallow: *.jpg
+Disallow: *.jpeg
+Disallow: *.webp
+Disallow: *.svg
+Disallow: *.gif
+Disallow: *.html
+Disallow: *.txt

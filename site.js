@@ -3,10 +3,35 @@
   var grid = document.getElementById("grid");
   document.getElementById("year").textContent = new Date().getFullYear();
 
+  // --- artwork protection -------------------------------------------------
+  // Images are painted as CSS backgrounds (no <img>), so the browser offers no
+  // "Save image as". Right-click, drag and long-press are blocked on artwork.
+  // This is a speed bump for casual copying, not a wall; the watermarks are
+  // the real protection.
+  function guard(el) {
+    ["contextmenu", "dragstart", "selectstart", "copy"].forEach(function (ev) {
+      el.addEventListener(ev, function (e) { e.preventDefault(); return false; });
+    });
+  }
+  document.addEventListener("keydown", function (e) {
+    var k = e.key.toLowerCase();
+    if ((e.ctrlKey || e.metaKey) && (k === "s" || k === "u") && !lb.hidden) e.preventDefault();
+  });
+
   if (!items.length) {
     grid.innerHTML = '<div class="empty">New work going up soon.</div>';
     return;
   }
+
+  var io = "IntersectionObserver" in window ? new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) {
+        var t = en.target;
+        t.style.backgroundImage = "url(images/" + t.getAttribute("data-file") + ")";
+        io.unobserve(t);
+      }
+    });
+  }, { rootMargin: "400px" }) : null;
 
   items.forEach(function (it, i) {
     var b = document.createElement("button");
@@ -15,8 +40,11 @@
     b.setAttribute("aria-label", "Open " + it.title);
     b.innerHTML =
       '<span class="num">' + String(i + 1).padStart(2, "0") + "</span>" +
-      '<img src="images/' + it.file + '" alt="' + it.title + '" loading="lazy">' +
+      '<span class="art" role="img" aria-label="' + it.title + '" data-file="' + it.file + '"></span>' +
       '<span class="cap"><span>' + it.title + "</span><span>" + (it.medium || "") + "</span></span>";
+    var art = b.querySelector(".art");
+    if (io) io.observe(art); else art.style.backgroundImage = "url(images/" + it.file + ")";
+    guard(b);
     b.addEventListener("click", function () { open(i); });
     grid.appendChild(b);
   });
@@ -25,11 +53,12 @@
   var img = document.getElementById("lb-img");
   var cap = document.getElementById("lb-cap");
   var cur = 0;
+  guard(lb);
 
   function show(i) {
     cur = (i + items.length) % items.length;
-    img.src = "images/" + items[cur].file;
-    img.alt = items[cur].title;
+    img.style.backgroundImage = "url(images/" + items[cur].file + ")";
+    img.setAttribute("aria-label", items[cur].title);
     cap.textContent = items[cur].title + (items[cur].medium ? ". " + items[cur].medium : "");
   }
   function open(i) { show(i); lb.hidden = false; document.body.style.overflow = "hidden"; document.getElementById("lb-close").focus(); }
