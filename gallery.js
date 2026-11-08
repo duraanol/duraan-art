@@ -8,7 +8,7 @@ window.GALLERY = [
   // finished pieces
   { file: "cowboy-skull.png", title: "Cowboy skull", medium: "Ink and color", wide: false },
   { file: "lady-and-roses.png", title: "Lady and roses", medium: "Ink and color", wide: false },
-  { file: "android-geisha.png", title: "Android geisha", medium: "Ink and color", wide: true },
+  { file: "android-geisha.png", title: "Android geisha", medium: "Ink and color", wide: false },
   { file: "knight-under-a-black-sun.png", title: "Knight under a black sun", medium: "Ink and color", wide: true },
   { file: "witchs-hat.png", title: "Witch's hat", medium: "Ink and color", wide: false },
   { file: "minotaur.png", title: "Minotaur", medium: "Ink", wide: false },
