@@ -39,7 +39,6 @@
     b.type = "button";
     b.setAttribute("aria-label", "Open " + it.title);
     b.innerHTML =
-      '<span class="num">' + String(i + 1).padStart(2, "0") + "</span>" +
       '<span class="art" role="img" aria-label="' + it.title + '" data-file="' + it.file + '"></span>' +
       '<span class="cap"><span>' + it.title + "</span><span>" + (it.medium || "") + "</span></span>";
     var art = b.querySelector(".art");
