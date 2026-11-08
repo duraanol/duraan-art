@@ -5,6 +5,14 @@
 // medium: short note (ink, Procreate, graphite...)
 // wide:  true for landscape pieces that should take two columns
 window.GALLERY = [
+  // finished pieces
+  { file: "cowboy-skull.png", title: "Cowboy skull", medium: "Ink and color", wide: false },
+  { file: "lady-and-roses.png", title: "Lady and roses", medium: "Ink and color", wide: false },
+  { file: "android-geisha.png", title: "Android geisha", medium: "Ink and color", wide: true },
+  { file: "knight-under-a-black-sun.png", title: "Knight under a black sun", medium: "Ink and color", wide: true },
+  { file: "witchs-hat.png", title: "Witch's hat", medium: "Ink and color", wide: false },
+  { file: "minotaur.png", title: "Minotaur", medium: "Ink", wide: false },
+  // flash
   { file: "flash-sheet-1.png", title: "Flash sheet no. 1", medium: "Ink, 11 designs", wide: false },
   { file: "knights-helm.png", title: "Knight's helm", medium: "Ink", wide: false },
   { file: "hound.png", title: "Hound", medium: "Ink", wide: false },
