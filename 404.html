@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not found</title>
+<meta name="description" content="Duraan Olomi. Ink, flash and character art. Commissions open.">
+<meta property="og:title" content="Duraan Olomi">
+<meta property="og:description" content="Ink, flash and character art. Commissions open.">
+<meta property="og:url" content="https://duraan.art">
+<meta property="og:image" content="https://duraan.art/images/og.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="mark" href="#" aria-label="Duraan Olomi, home">D.O.</a>
+  <nav aria-label="Sections">
+    <a href="#work">Work</a>
+    <a href="#commissions">Commissions</a>
+    <a href="#about">About</a>
+    <a href="mailto:hello@duraan.art">Email</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <h1 class="name">Duraan<br>Olomi</h1>
+    <p class="statement">Ink, flash and character art. Heavy line, flat color, nothing fussy.</p>
+    <a class="stamp" href="#commissions">Commissions open</a>
+  </section>
+
+  <section id="work" class="sheet" aria-labelledby="work-h">
+    <h2 id="work-h">Work</h2>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="commissions" class="commissions" aria-labelledby="comm-h">
+    <h2 id="comm-h">Commissions</h2>
+    <div class="comm-body">
+      <p>Two things I take on right now:</p>
+      <dl class="offers">
+        <div>
+          <dt>Tattoo flash</dt>
+          <dd>American traditional blackwork. Single designs or a full sheet. You get a clean, print-ready file your artist can work from.</dd>
+        </div>
+        <div>
+          <dt>Character art</dt>
+          <dd>Original characters, D&amp;D and TTRPG players, book and game characters. Bust or full body, inked, with flat color on request.</dd>
+        </div>
+      </dl>
+      <p>Send a short description and any references to <a href="mailto:hello@duraan.art">hello@duraan.art</a>. I reply within a few days with a quote and a timeline.</p>
+    </div>
+  </section>
+
+  <section id="about" class="about" aria-labelledby="about-h">
+    <h2 id="about-h">About</h2>
+    <div class="about-body">
+      <p>I draw in Orange County, California. Most pieces start on paper with graphite and a calligraphic ink pen, then get finished in Procreate. I build worlds on the side and a lot of the characters here come from them.</p>
+      <p>Elsewhere: <a href="https://duraanolomi.com">duraanolomi.com</a>, <a href="https://www.linkedin.com/in/duraanolomi">LinkedIn</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <span>&copy; <span id="year"></span> Duraan Olomi</span>
+  <a href="mailto:hello@duraan.art">hello@duraan.art</a>
+</footer>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lb-close" id="lb-close" aria-label="Close">&times;</button>
+  <button class="lb-nav lb-prev" id="lb-prev" aria-label="Previous">&lsaquo;</button>
+  <figure>
+    <img id="lb-img" alt="">
+    <figcaption id="lb-cap"></figcaption>
+  </figure>
+  <button class="lb-nav lb-next" id="lb-next" aria-label="Next">&rsaquo;</button>
+</div>
+
+<script src="gallery.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
