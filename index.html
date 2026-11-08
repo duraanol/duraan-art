@@ -74,7 +74,12 @@
           <dd>Anything that doesn't fit the above. These start with a short consult so we agree on scope, size and price.</dd>
         </div>
       </dl>
-      <p>Send a short description and any references to <a href="mailto:hello@duraan.art">hello@duraan.art</a>. I reply within a few days with a quote and a timeline.</p>
+      <p>Send a short description and any references. I'll reply within a few days with a quote and a timeline.</p>
+      <button type="button" class="copy-email" id="copy-email" data-email="hello@duraan.art" aria-describedby="copy-tip">
+        <span class="copy-email-addr">hello@duraan.art</span>
+        <span class="copy-email-tip" id="copy-tip" role="tooltip">Click to copy email to clipboard</span>
+      </button>
+      <p class="copy-email-done" id="copy-done" role="status" aria-live="polite" hidden>Email copied to clipboard!</p>
     </div>
   </section>
 

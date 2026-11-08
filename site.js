@@ -3,6 +3,37 @@
   var grid = document.getElementById("grid");
   document.getElementById("year").textContent = new Date().getFullYear();
 
+  // --- copy email button ---------------------------------------------------
+  var copyBtn = document.getElementById("copy-email");
+  if (copyBtn) {
+    var done = document.getElementById("copy-done");
+    var tip = copyBtn.querySelector(".copy-email-tip");
+    var timer;
+    copyBtn.addEventListener("click", function () {
+      var email = copyBtn.getAttribute("data-email");
+      var finish = function () {
+        copyBtn.classList.add("copied");
+        tip.textContent = "Copied!";
+        done.hidden = false;
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          copyBtn.classList.remove("copied");
+          tip.textContent = "Click to copy email to clipboard";
+          done.hidden = true;
+        }, 2500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(finish, function () { window.location.href = "mailto:" + email; });
+      } else {
+        var ta = document.createElement("textarea");
+        ta.value = email; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand("copy"); finish(); } catch (e) { window.location.href = "mailto:" + email; }
+        document.body.removeChild(ta);
+      }
+    });
+  }
+
   // --- artwork protection -------------------------------------------------
   // Images are painted as CSS backgrounds (no <img>), so the browser offers no
   // "Save image as". Right-click, drag and long-press are blocked on artwork.
