@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<script>(function(){try{var t=localStorage.getItem("theme");if(t!=="dark"&&t!=="light"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)}catch(e){}})();</script>
 <title>Duraan Olomi</title>
 <meta name="description" content="Duraan Olomi. Hand-drawn ink, flash and character art. No AI. Commissions open.">
 <meta name="robots" content="noai, noimageai, noimageindex">
@@ -30,6 +32,9 @@
     <a href="#about">About</a>
     <a href="#terms">Terms</a>
     <a href="mailto:hello@duraan.art">Email</a>
+    <button type="button" class="theme" id="theme" aria-pressed="false" title="Toggle dark mode">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label">Dark</span>
+    </button>
   </nav>
 </header>
 

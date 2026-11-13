@@ -4,11 +4,26 @@
   --mid: #5f5c55;
   --rule: #000000;
   --red: #c8102e;
+  --text2: #333333;
+  --art-paper: #ffffff;
+  --lb-bg: rgba(255,255,255,0.96);
   --display: "Big Shoulders Display", "Arial Narrow", sans-serif;
   --body: "IBM Plex Sans", system-ui, sans-serif;
   --gutter: clamp(16px, 4vw, 48px);
   --maxw: 1180px;
 }
+
+:root[data-theme="dark"] {
+  --paper: #101010;
+  --ink: #f3f1eb;
+  --mid: #a9a59c;
+  --rule: #f3f1eb;
+  --red: #e3243d;
+  --text2: #cfcbc2;
+  --lb-bg: rgba(16,16,16,0.96);
+}
+html { color-scheme: light; }
+html[data-theme="dark"] { color-scheme: dark; }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -16,6 +31,7 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
+  transition: background 150ms ease, color 150ms ease;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--body);
@@ -42,6 +58,21 @@ h2 { font-size: clamp(44px, 7vw, 84px); text-transform: uppercase; }
 .top nav { display: flex; gap: clamp(14px, 3vw, 32px); font-weight: 500; }
 .top nav a { text-decoration: none; }
 .top nav a:hover { text-decoration: underline; }
+.theme {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: none; border: 2px solid var(--ink); border-radius: 999px;
+  padding: 3px 10px 3px 6px; color: var(--ink); cursor: pointer;
+  font: inherit; font-weight: 500; font-size: 14px; line-height: 1;
+}
+.theme:hover { background: var(--ink); color: var(--paper); }
+.theme:hover .theme-icon { background: var(--paper); box-shadow: inset -5px -3px 0 0 var(--ink); }
+.theme-icon {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--ink); box-shadow: inset -5px -3px 0 0 var(--paper);
+  transition: box-shadow 150ms ease;
+}
+:root[data-theme="dark"] .theme-icon { box-shadow: inset 0 0 0 0 var(--paper); }
+:root[data-theme="dark"] .theme:hover .theme-icon { box-shadow: none; }
 
 main { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
 
@@ -84,6 +115,7 @@ section { padding: clamp(40px, 6vw, 72px) 0; }
 .sheet h2, .commissions h2, .about h2 { margin-bottom: 28px; }
 
 .grid {
+  background: var(--art-paper);
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 0;
@@ -93,9 +125,9 @@ section { padding: clamp(40px, 6vw, 72px) 0; }
 .piece {
   position: relative;
   border: 0;
-  outline: 3px solid var(--rule);
+  outline: 3px solid #000;
   outline-offset: -1.5px;
-  background: var(--paper);
+  background: var(--art-paper);
   padding: 0;
   cursor: zoom-in;
   overflow: hidden;
@@ -109,7 +141,7 @@ section { padding: clamp(40px, 6vw, 72px) 0; }
 @media (max-width: 580px) { .piece.wide { grid-column: span 1; } }
 .piece .art {
   display: block; width: 100%; aspect-ratio: 4 / 5;
-  background: var(--paper) center / contain no-repeat;
+  background: var(--art-paper) center / contain no-repeat;
   pointer-events: none;
 }
 .piece.wide .art { aspect-ratio: 8 / 5; }
@@ -125,15 +157,15 @@ section { padding: clamp(40px, 6vw, 72px) 0; }
 .piece .cap {
   position: absolute; left: 0; right: 0; bottom: 0;
   padding: 10px 14px;
-  background: var(--paper);
-  border-top: 3px solid var(--rule);
+  background: var(--art-paper); color: #000;
+  border-top: 3px solid #000;
   font-size: 15px;
   display: flex; justify-content: space-between; gap: 12px;
   transform: translateY(100%);
   transition: transform 160ms ease;
 }
 .piece:hover .cap, .piece:focus-visible .cap { transform: none; }
-.piece .cap span:last-child { color: var(--mid); }
+.piece .cap span:last-child { color: #5f5c55; }
 
 .empty {
   grid-column: 1 / -1;
@@ -157,7 +189,7 @@ section { padding: clamp(40px, 6vw, 72px) 0; }
 /* terms */
 .terms { border-top: 3px solid var(--rule); }
 .terms h2 { font-size: clamp(32px, 4vw, 48px); }
-.terms-body { max-width: 90ch; font-size: 11.5px; line-height: 1.5; color: #333; column-gap: 32px; }
+.terms-body { max-width: 90ch; font-size: 11.5px; line-height: 1.5; color: var(--text2); column-gap: 32px; }
 @media (min-width: 900px) { .terms-body { columns: 2; } }
 .terms-body p { margin: 0 0 10px; break-inside: avoid; }
 .terms-body strong { color: var(--ink); }
@@ -209,7 +241,7 @@ section { padding: clamp(40px, 6vw, 72px) 0; }
 /* lightbox */
 .lightbox {
   position: fixed; inset: 0; z-index: 50;
-  background: rgba(255,255,255,0.96);
+  background: var(--lb-bg);
   display: grid; grid-template-columns: 64px 1fr 64px; align-items: center;
 }
 .lightbox[hidden] { display: none; }

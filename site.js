@@ -1,5 +1,25 @@
 (function () {
   var items = window.GALLERY || [];
+
+  // --- dark mode -----------------------------------------------------------
+  var root = document.documentElement;
+  var themeBtn = document.getElementById("theme");
+  function paintTheme() {
+    var dark = root.getAttribute("data-theme") === "dark";
+    if (!themeBtn) return;
+    themeBtn.querySelector(".theme-label").textContent = dark ? "Light" : "Dark";
+    themeBtn.setAttribute("aria-pressed", dark ? "true" : "false");
+    themeBtn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+  }
+  if (themeBtn) {
+    themeBtn.addEventListener("click", function () {
+      var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      paintTheme();
+    });
+    paintTheme();
+  }
   var grid = document.getElementById("grid");
   document.getElementById("year").textContent = new Date().getFullYear();
 
