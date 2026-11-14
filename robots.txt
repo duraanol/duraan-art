@@ -70,3 +70,4 @@ Allow: /$
 Allow: /index.html
 Disallow: /images/
 Disallow: /tools/
+Disallow: /show.html
