@@ -36,7 +36,7 @@ window.GALLERY = [
   // ---- flash -------------------------------------------------------------
   { file: "flash-sheet-1.png", w: 1050, h: 1400, title: "Flash sheet no. 1", medium: "Ink, 11 designs", set: "flash" },
   { file: "minotaur.png", w: 1256, h: 1400, title: "Minotaur", medium: "Ink", set: "flash" },
-  { file: "hand-study.png", w: 912, h: 1400, title: "Hand study", medium: "Ink and grey wash", set: "flash" },
+  { file: "hand-study.png", w: 912, h: 1400, title: "Hand study", medium: "Ink and grey wash", set: "featured" },
   { file: "knights-helm.png", w: 1060, h: 1390, title: "Knight's helm", medium: "Ink", set: "flash" },
   { file: "hound.png", w: 1280, h: 1400, title: "Hound", medium: "Ink", set: "flash" },
   { file: "lute.png", w: 1246, h: 1248, title: "Lute", medium: "Ink", set: "flash" },

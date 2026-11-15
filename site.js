@@ -160,16 +160,19 @@
       var lens = strokes.map(function (p) { return p.getTotalLength(); });
       var total = lens.reduce(function (a, b) { return a + b; }, 0);
       var span = 2.4, at = 0.25;
+      var timing = [];
       strokes.forEach(function (p, i) {
         var dur = lens[i] / total * span;
+        p.style.transition = "none";
         p.style.strokeDasharray = lens[i] + " " + lens[i];
         p.style.strokeDashoffset = lens[i];
-        p.style.transition = "stroke-dashoffset " + dur.toFixed(2) + "s cubic-bezier(.3,0,.5,1) " + at.toFixed(2) + "s, fill-opacity 450ms ease " + (at + dur * 0.6).toFixed(2) + "s";
+        timing.push("stroke-dashoffset " + dur.toFixed(2) + "s cubic-bezier(.3,0,.5,1) " + at.toFixed(2) + "s, fill-opacity 450ms ease " + (at + dur * 0.6).toFixed(2) + "s");
         at += dur * 0.92;
       });
+      void sig.getBoundingClientRect();   // commit the hidden state before animating
       requestAnimationFrame(function () {
         requestAnimationFrame(function () {
-          strokes.forEach(function (p) { p.style.strokeDashoffset = "0"; p.classList.add("inked"); });
+          strokes.forEach(function (p, i) { p.style.transition = timing[i]; p.style.strokeDashoffset = "0"; p.classList.add("inked"); });
           setTimeout(function () { sig.classList.add("drawn"); sigBox.classList.add("ready"); }, (at + 0.2) * 1000);
         });
       });

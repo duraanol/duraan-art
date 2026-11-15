@@ -103,9 +103,11 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
 .sig { display: block; width: min(92vw, 520px); height: auto; overflow: visible; }
 .sig path {
   fill: var(--ink); stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
-  fill-opacity: 0; transition: fill-opacity 450ms ease;
+  fill-opacity: 0; stroke-dasharray: 2000; stroke-dashoffset: 2000;
+  transition: fill-opacity 450ms ease;
 }
-.sig.drawn path, .sig path.inked { fill-opacity: 1; }
+.sig path.inked { fill-opacity: 1; }
+.sig.drawn path { fill-opacity: 1; stroke-dasharray: none; stroke-dashoffset: 0; }
 .reflection {
   display: block; margin-top: -0.12em;
   font-family: "Vazirmatn", "Noto Naskh Arabic", "Geeza Pro", serif; font-weight: 700;
