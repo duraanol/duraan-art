@@ -1,7 +1,7 @@
 // Every piece on the site lives here. Add a line, drop the (watermarked) image in /images, done.
 // Run tools/process_art.py on new originals first: it crops, watermarks and tags them.
 // file:     filename inside the images folder
-// title:    shown in the slideshow, on hover and in the lightbox
+// title:    internal label only (not shown on the site)
 // medium:   short note (ink, Procreate, graphite...)
 // set:      "featured" (home page + hero rotation) or "flash" (flash page)
 // hero:     true to include in the home page rotation

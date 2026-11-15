@@ -169,7 +169,7 @@
     slides.forEach(function (it, i) {
       var d = document.createElement("div");
       d.className = "slide" + (i === 0 ? " on" : "");
-      d.setAttribute("role", "img"); d.setAttribute("aria-label", it.title);
+      d.setAttribute("role", "img"); d.setAttribute("aria-label", "Artwork " + (i + 1));
       d.style.backgroundImage = "url(/images/" + it.file + ")";
       if (it.bg) d.style.backgroundColor = it.bg;
       frame.appendChild(d);
@@ -186,7 +186,7 @@
       nodes[idx].classList.remove("on");
       idx = (n + slides.length) % slides.length;
       nodes[idx].classList.add("on");
-      sTitle.textContent = slides[idx].title;
+      sTitle.textContent = "";
       sCount.textContent = (idx + 1) + " / " + slides.length;
       restartBar();
     }
@@ -237,10 +237,8 @@
     var b = document.createElement("button");
     b.className = "piece" + (it.wide ? " wide" : "");
     b.type = "button";
-    b.setAttribute("aria-label", "Open " + it.title);
-    b.innerHTML =
-      '<span class="art" role="img" aria-label="' + it.title + '" data-file="' + it.file + '"></span>' +
-      '<span class="cap"><span>' + it.title + "</span><span>" + (it.medium || "") + "</span></span>";
+    b.setAttribute("aria-label", "Open artwork " + (i + 1));
+    b.innerHTML = '<span class="art" role="img" aria-label="Artwork ' + (i + 1) + '" data-file="' + it.file + '"></span>';
     var art = b.querySelector(".art");
     if (it.bg) art.style.backgroundColor = it.bg;
     if (io) io.observe(art); else art.style.backgroundImage = "url(/images/" + it.file + ")";
@@ -258,8 +256,8 @@
   function showLb(i) {
     cur = (i + items.length) % items.length;
     img.style.backgroundImage = "url(/images/" + items[cur].file + ")";
-    img.setAttribute("aria-label", items[cur].title);
-    cap.textContent = items[cur].title + (items[cur].medium ? ". " + items[cur].medium : "");
+    img.setAttribute("aria-label", "Artwork " + (cur + 1) + " of " + items.length);
+    cap.textContent = (cur + 1) + " / " + items.length;
   }
   function openLb(i) { showLb(i); lb.hidden = false; document.body.style.overflow = "hidden"; document.getElementById("lb-close").focus(); }
   function closeLb() { lb.hidden = true; document.body.style.overflow = ""; }
