@@ -148,6 +148,34 @@
     });
   }
 
+  // --- signature: draws itself on, then the Farsi reflection appears ---------
+  var sigBox = document.getElementById("signature");
+  if (sigBox) {
+    var sig = sigBox.querySelector(".sig");
+    var strokes = Array.prototype.slice.call(sig.querySelectorAll("path"));
+    var noMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (noMotion || !strokes[0].getTotalLength) {
+      sig.classList.add("drawn"); sigBox.classList.add("ready");
+    } else {
+      var lens = strokes.map(function (p) { return p.getTotalLength(); });
+      var total = lens.reduce(function (a, b) { return a + b; }, 0);
+      var span = 2.4, at = 0.25;
+      strokes.forEach(function (p, i) {
+        var dur = lens[i] / total * span;
+        p.style.strokeDasharray = lens[i] + " " + lens[i];
+        p.style.strokeDashoffset = lens[i];
+        p.style.transition = "stroke-dashoffset " + dur.toFixed(2) + "s cubic-bezier(.3,0,.5,1) " + at.toFixed(2) + "s, fill-opacity 450ms ease " + (at + dur * 0.6).toFixed(2) + "s";
+        at += dur * 0.92;
+      });
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          strokes.forEach(function (p) { p.style.strokeDashoffset = "0"; p.classList.add("inked"); });
+          setTimeout(function () { sig.classList.add("drawn"); sigBox.classList.add("ready"); }, (at + 0.2) * 1000);
+        });
+      });
+    }
+  }
+
   // --- hero slideshow --------------------------------------------------------
   var showEl = document.getElementById("show");
   if (showEl) {
@@ -159,6 +187,8 @@
     slides = head.concat(rest);
 
     var frame = document.getElementById("show-frame");
+    var stage = document.getElementById("show-stage");
+    var fit = showEl.classList.contains("show-fit") && stage;
     var sTitle = document.getElementById("show-title");
     var sCount = document.getElementById("show-count");
     var bar = document.getElementById("show-progress");
@@ -171,12 +201,23 @@
       d.className = "slide" + (i === 0 ? " on" : "");
       d.setAttribute("role", "img"); d.setAttribute("aria-label", "Artwork " + (i + 1));
       d.style.backgroundImage = "url(/images/" + it.file + ")";
-      if (it.bg) d.style.backgroundColor = it.bg;
       frame.appendChild(d);
     });
     var nodes = frame.children;
     guard(showEl);
 
+    // size the frame to the current piece: tall pieces stand tall, wide ones
+    // go wide, and nothing gets letterboxed
+    function fitFrame() {
+      if (!fit) return;
+      var it = slides[idx], r = (it.w && it.h) ? it.w / it.h : 4 / 3;
+      var availW = showEl.clientWidth;
+      var availH = Math.max(280, Math.min(window.innerHeight * 0.62, 820));
+      var w = Math.min(availW, availH * r), h = w / r;
+      stage.style.width = Math.round(w) + "px";
+      frame.style.height = Math.round(h) + "px";
+    }
+    if (fit) { fitFrame(); window.addEventListener("resize", fitFrame); }
     function restartBar() {
       bar.style.transition = "none"; bar.style.width = "0%";
       void bar.offsetWidth;
@@ -186,6 +227,7 @@
       nodes[idx].classList.remove("on");
       idx = (n + slides.length) % slides.length;
       nodes[idx].classList.add("on");
+      fitFrame();
       sTitle.textContent = "";
       sCount.textContent = (idx + 1) + " / " + slides.length;
       restartBar();
@@ -240,7 +282,7 @@
     b.setAttribute("aria-label", "Open artwork " + (i + 1));
     b.innerHTML = '<span class="art" role="img" aria-label="Artwork ' + (i + 1) + '" data-file="' + it.file + '"></span>';
     var art = b.querySelector(".art");
-    if (it.bg) art.style.backgroundColor = it.bg;
+    if (it.w && it.h) art.style.setProperty("--ar", it.w + " / " + it.h);
     if (io) io.observe(art); else art.style.backgroundImage = "url(/images/" + it.file + ")";
     guard(b);
     b.addEventListener("click", function () { openLb(i); });

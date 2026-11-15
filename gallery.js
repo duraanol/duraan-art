@@ -6,7 +6,7 @@
 // set:      "featured" (home page + hero rotation) or "flash" (flash page)
 // hero:     true to include in the home page rotation
 // wide:     true for landscape pieces that should take two grid columns
-// bg:       optional backdrop color for the hero frame (defaults to paper white)
+// w, h:     pixel size of the image (the slideshow sizes its frame to fit, no bars)
 window.SITE = {
   commissions: "open",          // "open" or "closed" — drives the stamp on the home page
   heroSeconds: 6,               // how long each hero slide stays up
@@ -23,28 +23,28 @@ window.SITE = {
 
 window.GALLERY = [
   // ---- featured ----------------------------------------------------------
-  { file: "green-hair-black-eye.png", title: "Green hair, black eye", medium: "Ink and color", set: "featured", hero: true, headliner: true, bg: "#8a3a1e" },
-  { file: "cowboy-skull.png", title: "Cowboy skull", medium: "Ink and color", set: "featured", hero: true },
-  { file: "android-geisha.png", title: "Android geisha", medium: "Ink and color", set: "featured", hero: true, bg: "#e6d2b4" },
-  { file: "knight-under-a-black-sun.png", title: "Knight under a black sun", medium: "Ink and color", set: "featured", hero: true, wide: true, bg: "#d8c9b0" },
-  { file: "the-rogue.png", title: "The rogue", medium: "Ink and color", set: "featured", hero: true, wide: true, bg: "#f3dcbc" },
-  { file: "dropship.png", title: "Dropship", medium: "Ink and color", set: "featured", hero: true },
-  { file: "lady-and-roses.png", title: "Lady and roses", medium: "Ink and color", set: "featured", hero: true },
-  { file: "witchs-hat.png", title: "Witch's hat", medium: "Ink and color", set: "featured", hero: true },
+  { file: "green-hair-black-eye.png", w: 918, h: 1400, title: "Green hair, black eye", medium: "Ink and color", set: "featured", hero: true, headliner: true },
+  { file: "cowboy-skull.png", w: 1400, h: 1312, title: "Cowboy skull", medium: "Ink and color", set: "featured", hero: true },
+  { file: "android-geisha.png", w: 972, h: 1400, title: "Android geisha", medium: "Ink and color", set: "featured", hero: true },
+  { file: "knight-under-a-black-sun.png", w: 1400, h: 918, title: "Knight under a black sun", medium: "Ink and color", set: "featured", hero: true, wide: true },
+  { file: "the-rogue.png", w: 1400, h: 918, title: "The rogue", medium: "Ink and color", set: "featured", hero: true, wide: true },
+  { file: "dropship.png", w: 1314, h: 1400, title: "Dropship", medium: "Ink and color", set: "featured", hero: true },
+  { file: "lady-and-roses.png", w: 1198, h: 1400, title: "Lady and roses", medium: "Ink and color", set: "featured", hero: true },
+  { file: "witchs-hat.png", w: 1400, h: 1394, title: "Witch's hat", medium: "Ink and color", set: "featured", hero: true },
 
   // ---- flash -------------------------------------------------------------
-  { file: "flash-sheet-1.png", title: "Flash sheet no. 1", medium: "Ink, 11 designs", set: "flash" },
-  { file: "minotaur.png", title: "Minotaur", medium: "Ink", set: "flash" },
-  { file: "hand-study.png", title: "Hand study", medium: "Ink and grey wash", set: "flash" },
-  { file: "knights-helm.png", title: "Knight's helm", medium: "Ink", set: "flash" },
-  { file: "hound.png", title: "Hound", medium: "Ink", set: "flash" },
-  { file: "lute.png", title: "Lute", medium: "Ink", set: "flash" },
-  { file: "anvil.png", title: "Anvil", medium: "Ink", set: "flash" },
-  { file: "raven.png", title: "Raven", medium: "Ink", set: "flash" },
-  { file: "broken-sword.png", title: "Broken sword", medium: "Ink", set: "flash" },
-  { file: "winged-axe.png", title: "Winged axe", medium: "Ink", set: "flash" },
-  { file: "scroll-and-horn.png", title: "Scroll and horn", medium: "Ink", set: "flash" },
-  { file: "tower.png", title: "Tower", medium: "Ink", set: "flash" },
-  { file: "square-and-trowel.png", title: "Square and trowel", medium: "Ink", set: "flash" },
-  { file: "key-ring.png", title: "Key ring", medium: "Ink", set: "flash" },
+  { file: "flash-sheet-1.png", w: 1050, h: 1400, title: "Flash sheet no. 1", medium: "Ink, 11 designs", set: "flash" },
+  { file: "minotaur.png", w: 1256, h: 1400, title: "Minotaur", medium: "Ink", set: "flash" },
+  { file: "hand-study.png", w: 912, h: 1400, title: "Hand study", medium: "Ink and grey wash", set: "flash" },
+  { file: "knights-helm.png", w: 1060, h: 1390, title: "Knight's helm", medium: "Ink", set: "flash" },
+  { file: "hound.png", w: 1280, h: 1400, title: "Hound", medium: "Ink", set: "flash" },
+  { file: "lute.png", w: 1246, h: 1248, title: "Lute", medium: "Ink", set: "flash" },
+  { file: "anvil.png", w: 1202, h: 1054, title: "Anvil", medium: "Ink", set: "flash" },
+  { file: "raven.png", w: 660, h: 1306, title: "Raven", medium: "Ink", set: "flash" },
+  { file: "broken-sword.png", w: 1216, h: 1258, title: "Broken sword", medium: "Ink", set: "flash" },
+  { file: "winged-axe.png", w: 690, h: 1314, title: "Winged axe", medium: "Ink", set: "flash" },
+  { file: "scroll-and-horn.png", w: 880, h: 868, title: "Scroll and horn", medium: "Ink", set: "flash" },
+  { file: "tower.png", w: 480, h: 1266, title: "Tower", medium: "Ink", set: "flash" },
+  { file: "square-and-trowel.png", w: 928, h: 816, title: "Square and trowel", medium: "Ink", set: "flash" },
+  { file: "key-ring.png", w: 592, h: 566, title: "Key ring", medium: "Ink", set: "flash" },
 ];
