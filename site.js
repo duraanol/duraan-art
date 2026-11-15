@@ -193,7 +193,7 @@
     var sCount = document.getElementById("show-count");
     var bar = document.getElementById("show-progress");
     var playBtn = document.getElementById("show-play");
-    var idx = 0, timer = null, paused = false, seconds = cfg.heroSeconds || 6;
+    var idx = 0, timer = null, paused = false, seconds = (document.body.classList.contains("kiosk") && cfg.kioskSeconds) || cfg.heroSeconds || 6;
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     slides.forEach(function (it, i) {

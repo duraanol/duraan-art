@@ -10,6 +10,7 @@
 window.SITE = {
   commissions: "open",          // "open" or "closed" — drives the stamp on the home page
   heroSeconds: 6,               // how long each hero slide stays up
+  kioskSeconds: 9,              // slower cycle in presenter mode (show.html)
   instagram: "https://www.instagram.com/duraan.art/",
   email: "hello@duraan.art",
   // Paste a Formspree form endpoint here (https://formspree.io, free) and the
