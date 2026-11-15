@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<script>(function(){try{var t=localStorage.getItem("theme");if(t!=="dark"&&t!=="light"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)}catch(e){}})();</script>
+<title>Work · duraan.art</title>
+<meta name="description" content="Custom character art, Ink, and flash designs. No AI ever. Commissions open.">
+<meta name="robots" content="noai, noimageai, noimageindex">
+<meta name="tdm-reservation" content="1">
+<meta name="tdm-policy" content="https://duraan.art/#terms">
+<meta name="copyright" content="© Duraan Olomi. All rights reserved. No AI training or text-and-data mining. See https://duraan.art/#terms">
+<meta property="og:title" content="duraan.art">
+<meta property="og:description" content="Custom character art, Ink, and flash designs. No AI ever. Commissions open.">
+<meta property="og:url" content="https://duraan.art/work.html">
+<meta property="og:image" content="https://duraan.art/images/flash-sheet-1.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="license" href="https://duraan.art/#terms">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="mark" href="/" aria-label="Duraan Olomi, home">D.O.</a>
+  <nav aria-label="Sections">
+    <a href="/work.html">Work</a>
+    <a href="/flash.html">Flash</a>
+    <a href="/#commissions">Commissions</a>
+    <a href="/#about">About</a>
+    <a href="/#terms">Terms</a>
+    <a href="https://www.instagram.com/duraan.art/" rel="me noopener" target="_blank">Instagram</a>
+    <button type="button" class="theme" id="theme" aria-pressed="false" title="Toggle dark mode">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label">Dark</span>
+    </button>
+  </nav>
+</header>
+
+<main data-page="work">
+  <section class="page-head">
+    <h1 class="name name-sm">Work</h1>
+    <p class="tag">Finished pieces. Custom character art and illustration.</p>
+  </section>
+  <section class="sheet" aria-labelledby="work-h">
+    <h2 id="work-h" class="visually-hidden">Featured work</h2>
+    <div class="grid" id="grid" data-set="featured"></div>
+    <p class="note">Flash designs live on their own page: <a href="/flash.html">duraan.art/flash</a>. All images are watermarked, visibly and invisibly, and are not licensed for any use. See <a href="/#terms">terms</a>.</p>
+  </section>
+</main>
+
+<footer class="foot">
+  <span>© Duraan Olomi</span>
+  <span><a href="https://www.instagram.com/duraan.art/" rel="me noopener" target="_blank">@duraan.art</a> · <a href="mailto:hello@duraan.art">hello@duraan.art</a> · <a href="/show.html" title="Full-screen slideshow for the table">Presenter mode</a></span>
+</footer>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lb-close" id="lb-close" aria-label="Close">&times;</button>
+  <button class="lb-nav lb-prev" id="lb-prev" aria-label="Previous">&lsaquo;</button>
+  <figure>
+    <div class="lb-art" id="lb-img" role="img" aria-label=""></div>
+    <figcaption id="lb-cap"></figcaption>
+  </figure>
+  <button class="lb-nav lb-next" id="lb-next" aria-label="Next">&rsaquo;</button>
+</div>
+
+<script src="/gallery.js"></script>
+<script src="/site.js"></script>
+</body>
+</html>
