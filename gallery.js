@@ -24,7 +24,7 @@ window.SITE = {
 window.GALLERY = [
   // ---- featured ----------------------------------------------------------
   { file: "green-hair-black-eye.png", w: 918, h: 1400, title: "Green hair, black eye", medium: "Ink and color", set: "featured", hero: true, headliner: true },
-  { file: "cowboy-skull.png", w: 1400, h: 1312, title: "Cowboy skull", medium: "Ink and color", set: "featured", hero: true },
+  { file: "cowboy-skull.png", w: 1168, h: 1400, title: "Cowboy skull", medium: "Ink and color", set: "featured", hero: true },
   { file: "android-geisha.png", w: 972, h: 1400, title: "Android geisha", medium: "Ink and color", set: "featured", hero: true },
   { file: "knight-under-a-black-sun.png", w: 1400, h: 918, title: "Knight under a black sun", medium: "Ink and color", set: "featured", hero: true, wide: true },
   { file: "the-rogue.png", w: 1400, h: 918, title: "The rogue", medium: "Ink and color", set: "featured", hero: true, wide: true },
